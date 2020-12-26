@@ -137,9 +137,20 @@ const MovePlayer = (state, { touches }) => {
 	let end = touches.find(x => x.type === "end");
 
 	if (end) {
+
+        let boxId = Object.keys(state).find(key => {
+			let body = state[key].body;
+
+			return (
+                body 
+                // &&
+				// distance([body.position.x, body.position.y], startPos) < 25
+			);
+		});
 		constraint.pointA = null;
 		constraint.bodyB = null;
-		constraint.pointB = null;
+        constraint.pointB = null;
+        state[boxId].source = "https://opengameart.org/sites/default/files/Pirate%201%20(Idle)%20PREVIEW.png";
 	}
 
 	return state;
