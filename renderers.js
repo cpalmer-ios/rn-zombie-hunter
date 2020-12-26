@@ -31,6 +31,7 @@ const Player = (props) => {
     const x = props.body.position.x - width / 2;
     const y = props.body.position.y - height / 2;
     const angle = props.body.angle;
+    const source = props.source;
   
     return (
       <Animated.Image
@@ -41,12 +42,10 @@ const Player = (props) => {
           width: width,
           height: height,
           transform: [{ rotate: angle + "rad" }],
-          backgroundColor: props.color || "blue",
-        //   backgroundImage: props.image || 'url('+hcbgImage+')',
+          backgroundColor: props.color || "transparent",
         }}
         source={{
-            uri:
-              'https://raw.githubusercontent.com/AboutReact/sampleresource/master/old_logo.png',
+            uri: source,
           }}
       />
     );

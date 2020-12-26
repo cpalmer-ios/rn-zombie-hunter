@@ -111,26 +111,27 @@ const MovePlayer = (state, { touches }) => {
 			let body = state[key].body;
 
 			return (
-				body &&
-				distance([body.position.x, body.position.y], startPos) < 25
+                body 
+                // &&
+				// distance([body.position.x, body.position.y], startPos) < 25
 			);
 		});
 
 		if (boxId) {
-			constraint.pointA = { x: startPos[0], y: startPos[1] };
-			constraint.bodyB = state[boxId].body;
-			constraint.pointB = { x: 0, y: 0 };
-            constraint.angleB = state[boxId].body.angle;
-            state[boxId].color = "red";
+			// constraint.pointA = { x: startPos[0], y: startPos[1] };
+			// constraint.bodyB = state[boxId].body;
+			// constraint.pointB = { x: 0, y: 0 };
+            // constraint.angleB = state[boxId].body.angle;
+            state[boxId].source = "https://raw.githubusercontent.com/AboutReact/sampleresource/master/old_logo.png";
 		}
 	}
 
 	//-- Handle move touch
-	let move = touches.find(x => x.type === "move");
+	// let move = touches.find(x => x.type === "move");
 
-	if (move) {
-		constraint.pointA = { x: move.event.pageX, y: move.event.pageY };
-	}
+	// if (move) {
+	// 	constraint.pointA = { x: move.event.pageX, y: move.event.pageY };
+	// }
 
 	//-- Handle end touch
 	let end = touches.find(x => x.type === "end");
