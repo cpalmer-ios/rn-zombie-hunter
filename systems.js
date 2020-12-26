@@ -122,7 +122,7 @@ const MovePlayer = (state, { touches }) => {
 			// constraint.bodyB = state[boxId].body;
 			// constraint.pointB = { x: 0, y: 0 };
             // constraint.angleB = state[boxId].body.angle;
-            state[boxId].source = "https://raw.githubusercontent.com/AboutReact/sampleresource/master/old_logo.png";
+            state[boxId].source = require("./espen.png");
 		}
 	}
 
@@ -150,7 +150,7 @@ const MovePlayer = (state, { touches }) => {
 		constraint.pointA = null;
 		constraint.bodyB = null;
         constraint.pointB = null;
-        state[boxId].source = "https://opengameart.org/sites/default/files/Pirate%201%20(Idle)%20PREVIEW.png";
+        state[boxId].source = require("./pirate.png");
 	}
 
 	return state;

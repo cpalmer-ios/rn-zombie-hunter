@@ -6,7 +6,9 @@ import { Box, Player } from "./renderers";
 import Matter from "matter-js";
 // import SpriteSheet from 'rn-sprite-sheet';
 
+// const source = "./pirate.png";
 
+const image = require("./pirate.png");
 
 Matter.Common.isElement = () => false; //-- Overriding this function because the original references HTMLElement
 
@@ -14,7 +16,6 @@ const RigidBodies = (props) => {
   const { width, height } = Dimensions.get("window");
   const boxSize = Math.trunc(Math.max(width, height) * 0.2);
   const floorSize = Math.trunc(Math.max(width, height) * 0.1);
-  const source = "https://opengameart.org/sites/default/files/Pirate%201%20(Idle)%20PREVIEW.png";
 
   const engine = Matter.Engine.create({ enableSleeping: false });
   const world = engine.world;
@@ -37,7 +38,7 @@ const RigidBodies = (props) => {
       systems={[Physics, MovePlayer]}
       entities={{
         physics: { engine: engine, world: world, constraint: constraint },
-        player: { body: body, size: [boxSize, boxSize], color: "transparent", source: source, renderer: Player },
+        player: { body: body, size: [boxSize, boxSize], color: "transparent", source: image, renderer: Player },
         floor: { body: floor, size: [width, floorSize], color: "#86E9BE", renderer: Box },
       }}
     >

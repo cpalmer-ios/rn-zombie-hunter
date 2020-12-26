@@ -1,7 +1,7 @@
 import React from "react";
-import Animated from "react-native-reanimated";
+import { AppRegistry, View, Image, StyleSheet } from 'react-native';
 
-import hcbgImage from "./espen.png";
+import Animated from "react-native-reanimated";
 
 const Box = (props) => {
   const width = props.size[0];
@@ -31,7 +31,7 @@ const Player = (props) => {
     const x = props.body.position.x - width / 2;
     const y = props.body.position.y - height / 2;
     const angle = props.body.angle;
-    const source = props.source;
+    const sprite = props.source;
   
     return (
       <Animated.Image
@@ -44,9 +44,7 @@ const Player = (props) => {
           transform: [{ rotate: angle + "rad" }],
           backgroundColor: props.color || "transparent",
         }}
-        source={{
-            uri: source,
-          }}
+        source={sprite}
       />
     );
   };
