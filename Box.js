@@ -17,7 +17,7 @@ export default class Box extends Component {
             top: y,
             width: width,
             height: height,
-            backgroundColor: this.props.color || "pink"
+            backgroundColor: this.props.color || "pink",
           }}/>
     );
   }
