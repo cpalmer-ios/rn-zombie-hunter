@@ -99,7 +99,7 @@ const CleanBoxes = (state, { touches, screen }) => {
 };
 
 const MovePlayer = (state, { touches }) => {
-	let constraint = state["physics"].constraint;
+	// let constraint = state["physics"].constraint;
 
 	//-- Handle start touch
 	let start = touches.find(x => x.type === "start");
@@ -122,7 +122,7 @@ const MovePlayer = (state, { touches }) => {
 			// constraint.bodyB = state[boxId].body;
 			// constraint.pointB = { x: 0, y: 0 };
             // constraint.angleB = state[boxId].body.angle;
-            state[boxId].source = require("./espen.png");
+            state[boxId].source = require("./assets/sprites/player/Idle-5.png");
 		}
 	}
 
@@ -147,10 +147,10 @@ const MovePlayer = (state, { touches }) => {
 				// distance([body.position.x, body.position.y], startPos) < 25
 			);
 		});
-		constraint.pointA = null;
-		constraint.bodyB = null;
-        constraint.pointB = null;
-        state[boxId].source = require("./pirate.png");
+		// constraint.pointA = null;
+		// constraint.bodyB = null;
+        // constraint.pointB = null;
+        state[boxId].source = require("./assets/sprites/player/Idle-1.png");
 	}
 
 	return state;

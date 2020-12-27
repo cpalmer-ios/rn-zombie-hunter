@@ -8,7 +8,7 @@ import Matter from "matter-js";
 
 // const source = "./pirate.png";
 
-const image = require("./pirate.png");
+const image = require("./assets/sprites/player/Idle-1.png");
 
 Matter.Common.isElement = () => false; //-- Overriding this function because the original references HTMLElement
 
@@ -20,7 +20,7 @@ const RigidBodies = (props) => {
   const engine = Matter.Engine.create({ enableSleeping: false });
   const world = engine.world;
   const body = Matter.Bodies.rectangle(width / 4, -1000, boxSize, boxSize, { frictionAir: 0.021 });
-  const floor = Matter.Bodies.rectangle(width / 2, height - boxSize / 10, width, boxSize / 2, { isStatic: true });
+  const floor = Matter.Bodies.rectangle(width / 2, height - boxSize / 4, width, boxSize / 2, { isStatic: true });
   const constraint = Matter.Constraint.create({
     label: "Drag Constraint",
     pointA: { x: 0, y: 0 },
@@ -39,7 +39,7 @@ const RigidBodies = (props) => {
       entities={{
         physics: { engine: engine, world: world, constraint: constraint },
         player: { body: body, size: [boxSize, boxSize], color: "transparent", source: image, renderer: Player },
-        floor: { body: floor, size: [width, floorSize], color: "#86E9BE", renderer: Box },
+        floor: { body: floor, size: [width, floorSize], color: "#333333", renderer: Box },
       }}
     >
       <StatusBar hidden={true} />
