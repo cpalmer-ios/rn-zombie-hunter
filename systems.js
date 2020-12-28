@@ -99,10 +99,10 @@ const CleanBoxes = (state, { touches, screen }) => {
 };
 
 const MovePlayer = (state, { touches }) => {
-	let constraint = state["physics"].constraint;
+	// let constraint = state["physics"].constraint;
 
 	//-- Handle start touch
-	let start = touches.find(x => x.type === "start");
+	let start = touches.find(x => x.type === "start"); 
 
 	if (start) {
 		let startPos = [start.event.pageX, start.event.pageY];
@@ -121,8 +121,28 @@ const MovePlayer = (state, { touches }) => {
 			// constraint.pointA = { x: startPos[0], y: startPos[1] };
 			// constraint.bodyB = state[boxId].body;
 			// constraint.pointB = { x: 0, y: 0 };
-            // constraint.angleB = state[boxId].body.angle;
-            state[boxId].source = require("./espen.png");
+			// constraint.angleB = state[boxId].body.angle;
+
+
+			setTimeout(function () {
+				state[boxId].source = require("./assets/sprites/player/attacks/Attack2-1.png");
+				setTimeout(function () {
+					state[boxId].source = require("./assets/sprites/player/attacks/Attack2-2.png");
+					setTimeout(function () {
+						state[boxId].source = require("./assets/sprites/player/attacks/Attack2-3.png");
+						setTimeout(function () {
+							state[boxId].source = require("./assets/sprites/player/attacks/Attack2-4.png");
+							setTimeout(function () {
+								state[boxId].source = require("./assets/sprites/player/attacks/Attack2-5.png");
+								setTimeout(function () {	
+									state[boxId].source = require("./assets/sprites/player/Idle-1.png");
+								}, 20);
+							}, 20); 
+						}, 20); 
+					}, 20);  
+				}, 20);  
+			}, 20);  
+            
 		}
 	}
 
@@ -141,16 +161,17 @@ const MovePlayer = (state, { touches }) => {
         let boxId = Object.keys(state).find(key => {
 			let body = state[key].body;
 
+			
 			return (
-                body 
+				body
                 // &&
 				// distance([body.position.x, body.position.y], startPos) < 25
 			);
 		});
-		constraint.pointA = null;
-		constraint.bodyB = null;
-        constraint.pointB = null;
-        state[boxId].source = require("./pirate.png");
+		// constraint.pointA = null;
+		// constraint.bodyB = null;
+        // constraint.pointB = null;
+        state[boxId].source = require("./assets/sprites/player/Idle-1.png");
 	}
 
 	return state;
