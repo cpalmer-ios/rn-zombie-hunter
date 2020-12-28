@@ -1,6 +1,5 @@
 import React from "react";
-import { AppRegistry, View, Image, StyleSheet } from 'react-native';
-
+import { ImageBackground } from 'react-native';
 import Animated from "react-native-reanimated";
 
 const Box = (props) => {
@@ -50,4 +49,14 @@ const Player = (props) => {
     );
   };
 
-export { Box, Player };
+  const LevelBackground = (props) => {
+    const source = props.source;
+    return (
+        <ImageBackground 
+        source={source}
+        style={{width: '100%', height: '100%'}} 
+    />
+    );
+  };
+
+export { Box, Player, LevelBackground };

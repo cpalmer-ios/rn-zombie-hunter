@@ -2,13 +2,11 @@ import React from "react";
 import { StatusBar, Dimensions } from "react-native";
 import { GameEngine } from "react-native-game-engine";
 import { Physics, CreateBox, MoveBox, MovePlayer, CleanBoxes, CreateSprite } from "./systems";
-import { Box, Player } from "./renderers";
+import { Box, Player, LevelBackground } from "./renderers";
 import Matter from "matter-js";
-// import SpriteSheet from 'rn-sprite-sheet';
-
-// const source = "./pirate.png";
 
 const image = require("./assets/sprites/player/Idle-1.png");
+const levelBackground = require('./parallax-mountain-bg.png');
 
 Matter.Common.isElement = () => false; //-- Overriding this function because the original references HTMLElement
 
@@ -38,6 +36,7 @@ const RigidBodies = (props) => {
       systems={[Physics, MovePlayer]}
       entities={{
         physics: { engine: engine, world: world, constraint: constraint },
+        background: { source: levelBackground, renderer: LevelBackground },
         player: { body: body, size: [boxSize, boxSize], color: "transparent", source: image, renderer: Player },
         floor: { body: floor, size: [width, floorSize], color: "#333333", renderer: Box },
       }}
