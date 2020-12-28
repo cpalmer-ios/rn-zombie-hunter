@@ -1,5 +1,5 @@
 import React from "react";
-import { ImageBackground } from 'react-native';
+import { ImageBackground, Image } from 'react-native';
 import Animated from "react-native-reanimated";
 
 const Box = (props) => {
@@ -54,9 +54,39 @@ const Player = (props) => {
     return (
         <ImageBackground 
         source={source}
-        style={{width: '100%', height: '100%'}} 
+        style={{width: '100%', height: '100%', paddingBottom: 10,}} 
     />
     );
   };
 
-export { Box, Player, LevelBackground };
+  const Mountains = (props) => {
+    const source = props.source;
+    return (
+        <Image
+        source={source}
+        style={{position: 'absolute', width: '100%', height: '100%'}} 
+    />
+    );
+  };
+
+  const Summit = (props) => {
+    const source = props.source;
+    return (
+        <Image
+        source={source}
+        style={{position: 'absolute', width: '100%', height: '100%'}} 
+    />
+    );
+  };
+
+  const Trees = (props) => {
+    const source = props.source;
+    return (
+        <Image
+        source={source}
+        style={{position: 'absolute', width: '100%', height: '100%'}} 
+    />
+    );
+  };
+
+export { Box, Player, LevelBackground, Mountains, Summit, Trees };
