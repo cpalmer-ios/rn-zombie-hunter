@@ -5,7 +5,8 @@ import { Physics, CreateBox, MoveBox, MovePlayer, CleanBoxes, CreateSprite } fro
 import { Box, Player, LevelBackground, Mountains, Summit, Trees } from "./renderers";
 import Matter from "matter-js";
 
-const image = require("./assets/sprites/player/Idle-1.png");
+
+const player = require("./assets/sprites/player/Idle-1.png");
 const levelBackground = require('./parallax-mountain-bg.png');
 const summit = require('./parallax-mountain-mountain-far.png');
 const mountains = require('./parallax-mountain-mountains.png');
@@ -41,7 +42,7 @@ const RigidBodies = (props) => {
         background: { source: levelBackground, renderer: LevelBackground },
         summit: { source: summit, renderer: Summit },
         mountains: { source: mountains, renderer: Mountains },
-        player: { body: body, size: [boxSize, boxSize], color: "transparent", source: image, renderer: Player },
+        player: { body: body, size: [boxSize, boxSize], color: "transparent", source: player, renderer: Player },
         floor: { body: floor, size: [width, floorSize], color: "#333333", renderer: Box },
         trees: { source: trees, renderer: Trees },
       }}
