@@ -39,7 +39,7 @@ const CreateBox = (state, { touches, screen }) => {
 	return state;
 };
 
-const MoveBox = (state, { touches }) => {
+const MoveBox = (state, { touches, screen }) => {
 	let constraint = state["physics"].constraint;
 
 	//-- Handle start touch
@@ -85,21 +85,8 @@ const MoveBox = (state, { touches }) => {
 	return state;
 };
 
-const CleanBoxes = (state, { touches, screen }) => {
-	let world = state["physics"].world;
-
-	Object.keys(state)
-		.filter(key => state[key].body && state[key].body.position.y > screen.height * 2)
-		.forEach(key => {
-			Matter.Composite.remove(world, state[key].body);
-			delete state[key];
-		});
-
-	return state;
-};
-
 const MovePlayer = (state, { touches }) => {
-	// let constraint = state["physics"].constraint;
+	let constraint = state["physics"].constraint; 
 
 	//-- Handle start touch
 	let start = touches.find(x => x.type === "start"); 
@@ -112,7 +99,6 @@ const MovePlayer = (state, { touches }) => {
 
 			return (
                 body 
-                // &&
 				// distance([body.position.x, body.position.y], startPos) < 25
 			);
 		});
@@ -125,17 +111,23 @@ const MovePlayer = (state, { touches }) => {
 
 
 			setTimeout(function () {
-				state[boxId].source = require("./assets/sprites/player/attacks/Attack2-1.png");
+				state[boxId].source = require("./assets/sprites/player/attacks/Attack2-1.png"),
+				state[boxId].body.position.x = state[boxId].body.position.x + 1
 				setTimeout(function () {
-					state[boxId].source = require("./assets/sprites/player/attacks/Attack2-2.png");
+					state[boxId].source = require("./assets/sprites/player/attacks/Attack2-2.png"),
+					state[boxId].body.position.x = state[boxId].body.position.x + 1
 					setTimeout(function () {
-						state[boxId].source = require("./assets/sprites/player/attacks/Attack2-3.png");
+						state[boxId].source = require("./assets/sprites/player/attacks/Attack2-3.png"),
+						state[boxId].body.position.x = state[boxId].body.position.x + 1
 						setTimeout(function () {
-							state[boxId].source = require("./assets/sprites/player/attacks/Attack2-4.png");
+							state[boxId].source = require("./assets/sprites/player/attacks/Attack2-4.png"),
+							state[boxId].body.position.x = state[boxId].body.position.x + 1
 							setTimeout(function () {
-								state[boxId].source = require("./assets/sprites/player/attacks/Attack2-5.png");
+								state[boxId].source = require("./assets/sprites/player/attacks/Attack2-5.png"),
+								state[boxId].body.position.x = state[boxId].body.position.x + 1
 								setTimeout(function () {	
-									state[boxId].source = require("./assets/sprites/player/Idle-1.png");
+									state[boxId].source = require("./assets/sprites/player/Idle-1.png"),
+									state[boxId].body.position.x = state[boxId].body.position.x + 1
 								}, 20);
 							}, 20); 
 						}, 20); 
@@ -146,7 +138,7 @@ const MovePlayer = (state, { touches }) => {
 		}
 	}
 
-	//-- Handle move touch
+	// //-- Handle move touch
 	// let move = touches.find(x => x.type === "move");
 
 	// if (move) {
@@ -177,4 +169,4 @@ const MovePlayer = (state, { touches }) => {
 	return state;
 };
 
-export { Physics, CreateBox, MoveBox, CleanBoxes, MovePlayer };
+export { Physics, CreateBox, MoveBox, MovePlayer };

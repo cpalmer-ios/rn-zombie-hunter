@@ -20,16 +20,18 @@ const RigidBodies = (props) => {
 
   const engine = Matter.Engine.create({ enableSleeping: false });
   const world = engine.world;
-  const body = Matter.Bodies.rectangle(width / 4, -1000, boxSize, boxSize - 50, { frictionAir: 0.021 });
-  const floor = Matter.Bodies.rectangle(width / 2, height - boxSize / 4, width, boxSize / 2, { isStatic: true });
+  const body = Matter.Bodies.rectangle(width / 4, -1000, boxSize, boxSize - 155, { frictionAir: 0.015 });
+  const floor = Matter.Bodies.rectangle(width / 2, height - boxSize / 6, width, 100, { isStatic: true });
   const constraint = Matter.Constraint.create({
     label: "Drag Constraint",
     pointA: { x: 0, y: 0 },
     pointB: { x: 0, y: 0 },
     length: 0.01,
-    stiffness: 0.1,
+    stiffness: 1,
     angularStiffness: 1,
   });
+
+  // alert(boxSize);
 
   Matter.World.add(world, [body, floor]);
   Matter.World.addConstraint(world, constraint);
