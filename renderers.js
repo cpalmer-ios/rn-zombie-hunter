@@ -40,7 +40,6 @@ const Player = (props) => {
           top: y,
           width: 300,
           height: 300,
-          transform: [{ rotate: angle + "rad" }],
           backgroundColor: props.color || "transparent",
           resizeMode: 'stretch',
         }}
@@ -81,10 +80,18 @@ const Player = (props) => {
 
   const Trees = (props) => {
     const source = props.source;
+    const x = props.body.position.x - 0;
     return (
         <Image
         source={source}
-        style={{position: 'absolute', width: '100%', height: '100%'}} 
+        style={{
+          position: 'absolute', 
+          width: '100%', 
+          height: '100%',
+          left: x,
+          backgroundColor: "transparent",
+          resizeMode: 'stretch',
+        }} 
     />
     );
   };
