@@ -29,8 +29,8 @@ const Player = (props) => {
     const height = props.size[1];
     const x = props.body.position.x - width / 2;
     const y = props.body.position.y - height;
-    const angle = props.body.angle;
     const sprite = props.source;
+    const scaleX = props.scaleX;
   
     return (
       <Animated.Image
@@ -41,6 +41,7 @@ const Player = (props) => {
           width: 300,
           height: 300,
           backgroundColor: props.color || "transparent",
+          transform: [{scaleX: scaleX }],
           resizeMode: 'stretch',
         }}
         source={sprite}
@@ -53,7 +54,7 @@ const Player = (props) => {
     return (
         <ImageBackground 
         source={source}
-        style={{width: '100%', height: '100%', paddingBottom: 10,}} 
+        style={{width: '100%', height: '100%'}} 
     />
     );
   };

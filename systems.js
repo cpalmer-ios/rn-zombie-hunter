@@ -39,51 +39,51 @@ const CreateBox = (state, { touches, screen }) => {
 	return state;
 };
 
-const MoveBox = (state, { touches, screen }) => {
-	let constraint = state["physics"].constraint;
+// const MoveBox = (state, { touches, screen }) => {
+// 	let constraint = state["physics"].constraint;
 
-	//-- Handle start touch
-	let start = touches.find(x => x.type === "start");
+// 	//-- Handle start touch
+// 	let start = touches.find(x => x.type === "start");
 
-	if (start) {
-		let startPos = [start.event.pageX, start.event.pageY];
+// 	if (start) {
+// 		let startPos = [start.event.pageX, start.event.pageY];
 
-		let boxId = Object.keys(state).find(key => {
-			let body = state[key].body;
+// 		let boxId = Object.keys(state).find(key => {
+// 			let body = state[key].body;
 
-			return (
-				body &&
-				distance([body.position.x, body.position.y], startPos) < 25
-			);
-		});
+// 			return (
+// 				body &&
+// 				distance([body.position.x, body.position.y], startPos) < 25
+// 			);
+// 		});
 
-		if (boxId) {
-			constraint.pointA = { x: startPos[0], y: startPos[1] };
-			constraint.bodyB = state[boxId].body;
-			constraint.pointB = { x: 0, y: 0 };
-            constraint.angleB = state[boxId].body.angle;
-            state[boxId].color = "red";
-		}
-	}
+// 		if (boxId) {
+// 			constraint.pointA = { x: startPos[0], y: startPos[1] };
+// 			constraint.bodyB = state[boxId].body;
+// 			constraint.pointB = { x: 0, y: 0 };
+//             constraint.angleB = state[boxId].body.angle;
+//             state[boxId].color = "red";
+// 		}
+// 	}
 
-	//-- Handle move touch
-	let move = touches.find(x => x.type === "move");
+// 	//-- Handle move touch
+// 	let move = touches.find(x => x.type === "move");
 
-	if (move) {
-		constraint.pointA = { x: move.event.pageX, y: move.event.pageY };
-	}
+// 	if (move) {
+// 		constraint.pointA = { x: move.event.pageX, y: move.event.pageY };
+// 	}
 
-	//-- Handle end touch
-	let end = touches.find(x => x.type === "end");
+// 	//-- Handle end touch
+// 	let end = touches.find(x => x.type === "end");
 
-	if (end) {
-		constraint.pointA = null;
-		constraint.bodyB = null;
-		constraint.pointB = null;
-	}
+// 	if (end) {
+// 		constraint.pointA = null;
+// 		constraint.bodyB = null;
+// 		constraint.pointB = null;
+// 	}
 
-	return state;
-};
+// 	return state;
+// };
 
 const MovePlayer = (state, { touches }) => {
 
@@ -113,26 +113,31 @@ const MovePlayer = (state, { touches }) => {
 			// constraint.pointB = { x: 0, y: 0 };
 			// constraint.angleB = state[boxId].body.angle;
 
-
 			setTimeout(function () {
-				state[boxId].source = require("./assets/sprites/player/attacks/Attack2-1.png")
-				state[boxId].body.position.x = state[boxId].body.position.x + 1
+				state[boxId].source = require("./assets/sprites/player/attacks/Attack2-1.png"),
+				// state[boxId].body.position.x = state[boxId].body.position.x + 1,
+				trees.position.x = trees.position.x - 5
 				setTimeout(function () {
-					state[boxId].source = require("./assets/sprites/player/attacks/Attack2-2.png")
-					state[boxId].body.position.x = state[boxId].body.position.x + 1
+					state[boxId].source = require("./assets/sprites/player/attacks/Attack2-2.png"),
+					// state[boxId].body.position.x = state[boxId].body.position.x + 1,
+					trees.position.x = trees.position.x - 5
 					setTimeout(function () {
-						state[boxId].source = require("./assets/sprites/player/attacks/Attack2-3.png")
-						state[boxId].body.position.x = state[boxId].body.position.x + 1
+						state[boxId].source = require("./assets/sprites/player/attacks/Attack2-3.png"),
+						// state[boxId].body.position.x = state[boxId].body.position.x + 1,
+						trees.position.x = trees.position.x - 5
 						setTimeout(function () {
-							state[boxId].source = require("./assets/sprites/player/attacks/Attack2-4.png")
-							state[boxId].body.position.x = state[boxId].body.position.x + 1
+							state[boxId].source = require("./assets/sprites/player/attacks/Attack2-4.png"),
+							// state[boxId].body.position.x = state[boxId].body.position.x + 1,
+							trees.position.x = trees.position.x - 5
 							setTimeout(function () {
-								state[boxId].source = require("./assets/sprites/player/attacks/Attack2-5.png")
-								state[boxId].body.position.x = state[boxId].body.position.x + 1
+								state[boxId].source = require("./assets/sprites/player/attacks/Attack2-5.png"),
+								// state[boxId].body.position.x = state[boxId].body.position.x + 1,
+								trees.position.x = trees.position.x - 5
 								setTimeout(function () {	
-									state[boxId].source = require("./assets/sprites/player/Idle-1.png")
-									state[boxId].body.position.x = state[boxId].body.position.x + 1
-									trees.position.x = trees.position.x - 50;
+									state[boxId].source = require("./assets/sprites/player/Idle-1.png"),
+									// state[boxId].body.position.x = state[boxId].body.position.x + 1,
+									trees.position.x = trees.position.x - 5
+									state[boxId].scaleX = +1
 								}, 20);
 							}, 20); 
 						}, 20); 
@@ -165,22 +170,23 @@ const MovePlayer = (state, { touches }) => {
 
 			setTimeout(function () {
 				state[boxId].source = require("./assets/sprites/player/attacks/Attack2-1.png"),
-				state[boxId].body.position.x = state[boxId].body.position.x - 1
+				// state[boxId].body.position.x = state[boxId].body.position.x - 1;
 				setTimeout(function () {
 					state[boxId].source = require("./assets/sprites/player/attacks/Attack2-2.png"),
-					state[boxId].body.position.x = state[boxId].body.position.x - 1
+					// state[boxId].body.position.x = state[boxId].body.position.x - 1;
 					setTimeout(function () {
 						state[boxId].source = require("./assets/sprites/player/attacks/Attack2-3.png"),
-						state[boxId].body.position.x = state[boxId].body.position.x - 1
+						// state[boxId].body.position.x = state[boxId].body.position.x - 1;
 						setTimeout(function () {
 							state[boxId].source = require("./assets/sprites/player/attacks/Attack2-4.png"),
-							state[boxId].body.position.x = state[boxId].body.position.x - 1
+							// state[boxId].body.position.x = state[boxId].body.position.x - 1;
 							setTimeout(function () {
 								state[boxId].source = require("./assets/sprites/player/attacks/Attack2-5.png"),
-								state[boxId].body.position.x = state[boxId].body.position.x - 1
+								// state[boxId].body.position.x = state[boxId].body.position.x - 1;
 								setTimeout(function () {	
 									state[boxId].source = require("./assets/sprites/player/Idle-1.png"),
-									state[boxId].body.position.x = state[boxId].body.position.x - 1
+									// state[boxId].body.position.x = state[boxId].body.position.x - 1;
+									state[boxId].scaleX = -1
 								}, 20);
 							}, 20); 
 						}, 20); 
@@ -215,11 +221,11 @@ const MovePlayer = (state, { touches }) => {
 		});
 		// constraint.pointA = null;
 		// constraint.bodyB = null;
-        // constraint.pointB = null;
-        state[boxId].source = require("./assets/sprites/player/Idle-1.png");
+		// constraint.pointB = null;
+		state[boxId].source = require("./assets/sprites/player/Idle-1.png");
 	}
 
 	return state;
 };
 
-export { Physics, CreateBox, MoveBox, MovePlayer };
+export { Physics, CreateBox, MovePlayer };

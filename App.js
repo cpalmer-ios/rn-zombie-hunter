@@ -20,9 +20,9 @@ const RigidBodies = (props) => {
 
   const engine = Matter.Engine.create({ enableSleeping: false });
   const world = engine.world;
-  const body = Matter.Bodies.rectangle(width / 4, -1000, boxSize, boxSize - 155, { frictionAir: 0.015 });
+  const body = Matter.Bodies.rectangle(width / 4, height / 4, boxSize, boxSize + 11, { frictionAir: 0.1, mass: 80, collisionFilter: { group: 1, category: 1} });
   const tree =  Matter.Bodies.rectangle(width / 2, height - boxSize / 6, width, 100, { isStatic: true });
-  const floor = Matter.Bodies.rectangle(width / 2, height - boxSize / 6, width, 100, { isStatic: true });
+  const floor = Matter.Bodies.rectangle(width / 2, height - boxSize / 6, width, 100, { isStatic: true, collisionFilter: { group: 1, category: 1} });
   const constraint = Matter.Constraint.create({
     label: "Drag Constraint",
     pointA: { x: 0, y: 0 },
@@ -45,7 +45,7 @@ const RigidBodies = (props) => {
         background: { source: levelBackground, renderer: LevelBackground },
         summit: { source: summit, renderer: Summit },
         mountains: { source: mountains, renderer: Mountains },
-        player: { body: body, size: [boxSize, boxSize], color: "transparent", source: player, renderer: Player },
+        player: { body: body, size: [boxSize / 2, boxSize /2], color: "transparent", source: player, renderer: Player, scaleX: 1 },
         floor: { body: floor, size: [width, floorSize], color: "#333333", renderer: Box },
         trees: { body: tree, source: trees, renderer: Trees },
       }}
