@@ -1,4 +1,5 @@
-import { Box } from "./renderers";
+import { Dimensions } from "react-native";
+import { Box, Player } from "./renderers";
 import Matter from "matter-js";
 
 let boxIds = 0;
@@ -32,7 +33,7 @@ const CreateBox = (state, { touches, screen }) => {
 			body: body,
 			size: [boxSize, boxSize],
 			color: boxIds % 2 == 0 ? "blue" : "#B8E986",
-			renderer: Box
+			renderer: Player
 		};
 	});
 
@@ -85,6 +86,8 @@ const CreateBox = (state, { touches, screen }) => {
 // 	return state;
 // };
 
+const { width, height } = Dimensions.get("window");
+
 const MovePlayer = (state, { touches }) => {
 
 	// alert(touches);
@@ -93,7 +96,7 @@ const MovePlayer = (state, { touches }) => {
 	//-- Handle start touch
 	let start = touches.find(x => x.type === "start"); 
 
-	if (start && start.event.pageX > 600) {
+	if (start && start.event.pageX > width / 4 * 3.75) {
 		
 
 		let boxId = Object.keys(state).find(key => {
@@ -148,7 +151,7 @@ const MovePlayer = (state, { touches }) => {
 		}
 	}
 
-	else if (start && start.event.pageX < 600) {
+	else if (start && start.event.pageX < width / 4 * 3.75) {
 
 				
 
@@ -171,21 +174,27 @@ const MovePlayer = (state, { touches }) => {
 			setTimeout(function () {
 				state[boxId].source = require("./assets/sprites/player/attacks/Attack2-1.png"),
 				// state[boxId].body.position.x = state[boxId].body.position.x - 1;
+				trees.position.x = trees.position.x + 5
 				setTimeout(function () {
 					state[boxId].source = require("./assets/sprites/player/attacks/Attack2-2.png"),
 					// state[boxId].body.position.x = state[boxId].body.position.x - 1;
+					trees.position.x = trees.position.x + 5
 					setTimeout(function () {
 						state[boxId].source = require("./assets/sprites/player/attacks/Attack2-3.png"),
 						// state[boxId].body.position.x = state[boxId].body.position.x - 1;
+						trees.position.x = trees.position.x + 5
 						setTimeout(function () {
 							state[boxId].source = require("./assets/sprites/player/attacks/Attack2-4.png"),
 							// state[boxId].body.position.x = state[boxId].body.position.x - 1;
+							trees.position.x = trees.position.x + 5
 							setTimeout(function () {
 								state[boxId].source = require("./assets/sprites/player/attacks/Attack2-5.png"),
 								// state[boxId].body.position.x = state[boxId].body.position.x - 1;
+								trees.position.x = trees.position.x + 5
 								setTimeout(function () {	
 									state[boxId].source = require("./assets/sprites/player/Idle-1.png"),
 									// state[boxId].body.position.x = state[boxId].body.position.x - 1;
+									trees.position.x = trees.position.x + 5
 									state[boxId].scaleX = -1
 								}, 20);
 							}, 20); 

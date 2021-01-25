@@ -1,7 +1,7 @@
 import React from "react";
 import { StatusBar, Dimensions } from "react-native";
 import { GameEngine } from "react-native-game-engine";
-import { Physics, CreateBox, MoveBox, MovePlayer, CleanBoxes, CreateSprite } from "./systems";
+import { Physics, MovePlayer } from "./systems";
 import { Box, Player, LevelBackground, Mountains, Summit, Trees } from "./renderers";
 import Matter from "matter-js";
 
