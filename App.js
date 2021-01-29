@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { StatusBar, Dimensions } from "react-native";
 import { GameEngine } from "react-native-game-engine";
-import { Physics, MovePlayer } from "./systems";
+import { Physics, MovePlayer, spriteSheet } from "./systems";
 import { Box, Player, LevelBackground, Mountains, Summit, Trees } from "./renderers";
 import Matter from "matter-js";
+import { render } from "react-dom";
 
 
-const player = require("./assets/sprites/player/Idle-1.png");
+const idle = ["./assets/sprites/player/Idle-1.png", "./assets/sprites/player/Idle-2.png", "./assets/sprites/player/Idle-3.png", "./assets/sprites/player/Idle-4.png", "./assets/sprites/player/Idle-5.png", "./assets/sprites/player/Idle-6.png", "./assets/sprites/player/Idle-7.png", "./assets/sprites/player/Idle-8.png"];
+// const source = require("./assets/sprites/player/Idle-1.png");
+let source = require("./assets/sprites/player/Idle-1.png");
 const levelBackground = require('./parallax-mountain-bg.png');
 const summit = require('./parallax-mountain-mountain-far.png');
 const mountains = require('./parallax-mountain-mountains.png');
@@ -14,6 +17,7 @@ const trees = require('./parallax-mountain-foreground-trees.png');
 Matter.Common.isElement = () => false; //-- Overriding this function because the original references HTMLElement
 
 const RigidBodies = (props) => {
+
   const { width, height } = Dimensions.get("window");
   const boxSize = Math.trunc(Math.max(width, height) * 0.2);
   const floorSize = Math.trunc(Math.max(width, height) * 0.1);
@@ -45,7 +49,7 @@ const RigidBodies = (props) => {
         background: { source: levelBackground, renderer: LevelBackground },
         summit: { source: summit, renderer: Summit },
         mountains: { source: mountains, renderer: Mountains },
-        player: { body: body, size: [boxSize / 2, boxSize /2], color: "transparent", source: player, renderer: Player, scaleX: 1 },
+        player: { body: body, size: [boxSize / 2, boxSize /2], color: "transparent", source: source, sheet: idle, renderer: Player, scaleX: 1 },
         floor: { body: floor, size: [width, floorSize], color: "#333333", renderer: Box },
         trees: { body: tree, source: trees, renderer: Trees },
       }}

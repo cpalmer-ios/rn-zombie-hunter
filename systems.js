@@ -7,7 +7,9 @@ let boxIds = 0;
 const distance = ([x1, y1], [x2, y2]) =>
 	Math.sqrt(Math.abs(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2)));
 
+
 const Physics = (state, { touches, time }) => {
+
 	let engine = state["physics"].engine;
 
 	Matter.Engine.update(engine, time.delta);
@@ -15,9 +17,38 @@ const Physics = (state, { touches, time }) => {
 	return state;
 };
 
+
+const spriteSheet = (state) => {
+	setTimeout(function () {
+	  state.player.source = require("./assets/sprites/player/Idle-1.png")
+		setTimeout(function () {
+		state.player.source = require("./assets/sprites/player/Idle-2.png")
+		  setTimeout(function () {
+		  state.player.source = require("./assets/sprites/player/Idle-3.png")
+			setTimeout(function () {
+			state.player.source = require("./assets/sprites/player/Idle-4.png")
+			  setTimeout(function () {
+			  state.player.source = require("./assets/sprites/player/Idle-5.png")
+				setTimeout(function () {	
+				state.player.source = require("./assets/sprites/player/Idle-6.png")
+				setTimeout(function () {	
+				  state.player.source = require("./assets/sprites/player/Idle-7.png")
+				  setTimeout(function () {	
+					state.player.source = require("./assets/sprites/player/Idle-8.png")
+					}, 2000)
+				  }, 2000)
+				}, 2000)
+			  }, 2000)
+			}, 2000)
+		  }, 2000)
+		}, 2000)
+	}, 2000)
+  }
+
 const CreateBox = (state, { touches, screen }) => {
 	let world = state["physics"].world;
 	let boxSize = Math.trunc(Math.max(screen.width, screen.height) * 0.075);
+	let img = "";
 
 	touches.filter(t => t.type === "press").forEach(t => {
 		let body = Matter.Bodies.rectangle(
@@ -39,6 +70,8 @@ const CreateBox = (state, { touches, screen }) => {
 
 	return state;
 };
+
+
 
 // const MoveBox = (state, { touches, screen }) => {
 // 	let constraint = state["physics"].constraint;
@@ -89,6 +122,8 @@ const CreateBox = (state, { touches, screen }) => {
 const { width, height } = Dimensions.get("window");
 
 const MovePlayer = (state, { touches }) => {
+
+	let i = 0;
 
 	// alert(touches);
 	let trees = state.trees.body;
@@ -205,7 +240,8 @@ const MovePlayer = (state, { touches }) => {
             
 		}
 
-	}
+	} 
+	
 	// //-- Handle move touch
 	// let move = touches.find(x => x.type === "move");
 
@@ -231,10 +267,10 @@ const MovePlayer = (state, { touches }) => {
 		// constraint.pointA = null;
 		// constraint.bodyB = null;
 		// constraint.pointB = null;
-		state[boxId].source = require("./assets/sprites/player/Idle-1.png");
+		state.player.source = require("./assets/sprites/player/Idle-1.png");
 	}
 
 	return state;
 };
 
-export { Physics, CreateBox, MovePlayer };
+export { Physics, CreateBox, MovePlayer, spriteSheet};
